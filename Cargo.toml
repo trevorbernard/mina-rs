@@ -58,7 +58,7 @@ protobuf = { features = ["with-bytes"], version = "3" }
 bitvec = "1"
 argon2 = "0.4"
 derive_more = "0.99"
-o1-utils = { git = "https://github.com/o1-labs/proof-systems", rev = "86f75976859fe9131c6e1db81511ce4d3127d8fa" }
+o1-utils = { path = "./proof-systems/util" }
 base64 = "0.13"
 proc-macro2 = "1.0"
 serde_stacker = "0.1"
@@ -71,6 +71,6 @@ blake2 = "0.10"
 sha2 = "0.10"
 strum = { features = ["derive"], version = "0.24" }
 
-mina-curves = { git = "https://github.com/o1-labs/proof-systems", rev = "86f75976859fe9131c6e1db81511ce4d3127d8fa" }
-mina-hasher = { git = "https://github.com/o1-labs/proof-systems", rev = "86f75976859fe9131c6e1db81511ce4d3127d8fa" }
-mina-signer = { git = "https://github.com/o1-labs/proof-systems", rev = "86f75976859fe9131c6e1db81511ce4d3127d8fa" }
+mina-curves = { path = "./proof-systems/curves" }
+mina-hasher = { path = "./proof-systems/hasher" }
+mina-signer = { path = "./proof-systems/signer" }
