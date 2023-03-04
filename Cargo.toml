@@ -58,7 +58,7 @@ protobuf = { features = ["with-bytes"], version = "3" }
 bitvec = "1"
 argon2 = "0.4"
 derive_more = "0.99"
-o1-utils = { path = "./proof-systems/util" }
+o1-utils = { path = "./proof-systems/utils" }
 base64 = "0.13"
 proc-macro2 = "1.0"
 serde_stacker = "0.1"
