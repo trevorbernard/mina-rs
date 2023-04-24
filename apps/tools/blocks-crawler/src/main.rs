@@ -31,14 +31,12 @@ async fn main() {
     // Read limit value from cli
     let limit = args.limit;
 
-    // Fetch n blocks info from graphql api
-    let mut blocks = fetch_next_block_info(INIT_STATE_HASH).await.unwrap().data.blocks;
-    while !blocks.is_empty() {
+    for i in 1..500000 {
+        let mut blocks = fetch_i_block_info(i).await.unwrap().data.blocks;
         stream::iter(blocks)
             .for_each_concurrent(args.concurrency, |block| async move {
                 check_block("mainnet", block).await;
             })
             .await;
-        blocks = fetch_next_block_info(INIT_STATE_HASH).await.unwrap().data.blocks;
-    } 
+    }
 }

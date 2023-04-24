@@ -112,6 +112,27 @@ pub async fn fetch_next_block_info(previous_state_hash: &str) -> Result<QueryRes
     res.json::<QueryResponse>().await
 } 
 
+pub async fn fetch_i_block_info(previous_state_hash: u64) -> Result<QueryResponse, reqwest::Error> {
+    let client = reqwest::Client::new();
+    let query: String = format!(
+        "query Fetch {{
+            blocks(limit: 1000, query: {{ blockHeight: {} }} ) {{
+                blockHeight
+                stateHash
+            }}
+        }}",
+        previous_state_hash
+    );
+    let res = client
+        .post("https://graphql.minaexplorer.com/")
+        // Below query retrieves blockHeight and stateHash of 10 latest blocks
+        // To learn more about graphql query refer to https://docs.minaprotocol.com/en/developers/graphql-api
+        .json(&serde_json::json!({ "query": query }))
+        .send()
+        .await?;
+    res.json::<QueryResponse>().await
+} 
+
 pub async fn retrieve_block_json(
     block_url: &str,
 ) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
