@@ -1,7 +1,7 @@
 // Copyright 2020 ChainSafe Systems
 // SPDX-License-Identifier: Apache-2.0
 
-use blocks::{check_block, fetch_block_info, fetch_next_block_info, BlockInfo};
+use blocks::{check_block, fetch_block_info, fetch_next_block_info, BlockInfo, fetch_i_block_info};
 use clap::Parser;
 use futures::{stream, StreamExt};
 use std::fs::create_dir_all;
