@@ -95,7 +95,7 @@ pub async fn fetch_next_block_info(previous_state_hash: &str) -> Result<QueryRes
     let client = reqwest::Client::new();
     let query: String = format!(
         "query Fetch {{
-            blocks(limit: 1000, sortBy: RECEIVEDTIME_DESC, query: {{protocolState: {{previousStateHash: {}}}}}) {{
+            blocks(limit: 1000, query: {{ protocolState: {{ previousStateHash: {} }} }} ) {{
                 blockHeight
                 stateHash
             }}
