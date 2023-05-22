@@ -168,8 +168,7 @@ pub struct SpongeDigestBeforeEvaluations(
     pub (),
 );
 
-pub type SpongeDigestBeforeEvaluationsV1 =
-    Versioned2<SpongeDigestBeforeEvaluations, 1, 1>;
+pub type SpongeDigestBeforeEvaluationsV1 = Versioned2<SpongeDigestBeforeEvaluations, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(SpongeDigestBeforeEvaluations)]

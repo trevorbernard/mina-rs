@@ -29,14 +29,16 @@ pub struct Versioned<T, const V: u16> {
 pub type Versioned2<T, const MAJOR: u16, const MINOR: u16> = Versioned<Versioned<T, MINOR>, MAJOR>;
 
 /// A wrapper around version supporting Major, Minor, and Patch revisions
-pub type Versioned3<T, const MAJOR: u16, const MINOR: u16, const PATCH: u16> = Versioned2<Versioned<T, PATCH>, MAJOR, MINOR>;
+pub type Versioned3<T, const MAJOR: u16, const MINOR: u16, const PATCH: u16> =
+    Versioned2<Versioned<T, PATCH>, MAJOR, MINOR>;
 
 /// A wrapper around version supporting Major, Minor, Patch, and Revision revisions
-pub type Versioned4<T, const MAJOR: u16, const MINOR: u16, const PATCH: u16, const REVISION: u16> = Versioned3<Versioned<T, REVISION>, MAJOR, MINOR, PATCH>;
+pub type Versioned4<T, const MAJOR: u16, const MINOR: u16, const PATCH: u16, const REVISION: u16> =
+    Versioned3<Versioned<T, REVISION>, MAJOR, MINOR, PATCH>;
 
 impl<T, const V: u16> Default for Versioned<T, V>
-    where
-        T: Default,
+where
+    T: Default,
 {
     fn default() -> Self {
         Self {
@@ -93,9 +95,7 @@ impl<T, const V1: u16, const V2: u16> From<Versioned2<T, V1, V2>> for (T,) {
     }
 }
 
-impl<T, const V1: u16, const V2: u16, const V3: u16> From<T>
-for Versioned3<T, V1, V2, V3>
-{
+impl<T, const V1: u16, const V2: u16, const V3: u16> From<T> for Versioned3<T, V1, V2, V3> {
     #[inline]
     fn from(t: T) -> Self {
         let t: Versioned2<T, V2, V3> = t.into();
@@ -103,9 +103,7 @@ for Versioned3<T, V1, V2, V3>
     }
 }
 
-impl<T, const V1: u16, const V2: u16, const V3: u16>
-From<Versioned3<T, V1, V2, V3>> for (T,)
-{
+impl<T, const V1: u16, const V2: u16, const V3: u16> From<Versioned3<T, V1, V2, V3>> for (T,) {
     #[inline]
     fn from(t: Versioned3<T, V1, V2, V3>) -> Self {
         let (t,): (Versioned2<T, V2, V3>,) = t.into();
@@ -114,7 +112,7 @@ From<Versioned3<T, V1, V2, V3>> for (T,)
 }
 
 impl<T, const V1: u16, const V2: u16, const V3: u16, const V4: u16> From<T>
-for Versioned4<T, V1, V2, V3, V4>
+    for Versioned4<T, V1, V2, V3, V4>
 {
     #[inline]
     fn from(t: T) -> Self {
@@ -124,7 +122,7 @@ for Versioned4<T, V1, V2, V3, V4>
 }
 
 impl<T, const V1: u16, const V2: u16, const V3: u16, const V4: u16>
-From<Versioned4<T, V1, V2, V3, V4>> for (T,)
+    From<Versioned4<T, V1, V2, V3, V4>> for (T,)
 {
     #[inline]
     fn from(t: Versioned4<T, V1, V2, V3, V4>) -> Self {

@@ -34,7 +34,8 @@ pub struct ProofMessagesJson {
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
 pub struct ProofMessageWithoutDegreeBoundList(pub Vec<FiniteECPoint>);
 
-pub type ProofMessageWithoutDegreeBoundListV1 = Versioned2<ProofMessageWithoutDegreeBoundList, 1, 1>;
+pub type ProofMessageWithoutDegreeBoundListV1 =
+    Versioned2<ProofMessageWithoutDegreeBoundList, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(ProofMessageWithoutDegreeBoundList)]
