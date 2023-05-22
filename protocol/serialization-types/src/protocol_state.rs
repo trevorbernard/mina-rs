@@ -18,7 +18,7 @@ pub struct ProtocolState {
 }
 
 /// This structure can be thought of like the block header. It contains the most essential information of a block (v1)
-pub type ProtocolStateV1 = Versioned<Versioned<ProtocolState, 1>, 1>;
+pub type ProtocolStateV1 = Versioned2<ProtocolState, 1, 1>;
 
 /// This structure can be thought of like the block header. It contains the most essential information of a block. (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

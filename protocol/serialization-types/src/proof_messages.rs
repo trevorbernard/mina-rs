@@ -8,7 +8,7 @@
 use crate::{field_and_curve_elements::FiniteECPoint, json::*, v1::*};
 use mina_serialization_types_macros::AutoFrom;
 use serde::{Deserialize, Serialize};
-use versioned::Versioned;
+use versioned::{Versioned, Versioned2};
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
 pub struct ProofMessages {
@@ -34,8 +34,7 @@ pub struct ProofMessagesJson {
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
 pub struct ProofMessageWithoutDegreeBoundList(pub Vec<FiniteECPoint>);
 
-pub type ProofMessageWithoutDegreeBoundListV1 =
-    Versioned<Versioned<ProofMessageWithoutDegreeBoundList, 1>, 1>;
+pub type ProofMessageWithoutDegreeBoundListV1 = Versioned2<ProofMessageWithoutDegreeBoundList, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(ProofMessageWithoutDegreeBoundList)]

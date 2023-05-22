@@ -7,7 +7,7 @@
 use crate::{common::*, json::*, v1::*, *};
 use mina_serialization_types_macros::AutoFrom;
 use serde::{Deserialize, Serialize};
-use versioned::Versioned;
+use versioned::{Versioned, Versioned2};
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
 pub struct TransactionSnarkWork {
@@ -88,7 +88,7 @@ pub struct Statement {
     pub sok_digest: ByteVecV1,
 }
 
-pub type StatementV1 = Versioned<Versioned<Statement, 1>, 1>;
+pub type StatementV1 = Versioned2<Statement, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(Statement)]
@@ -111,7 +111,7 @@ pub struct PendingCoinbaseStackState {
     pub target: PendingCoinbaseV1,
 }
 
-pub type PendingCoinbaseStackStateV1 = Versioned<Versioned<PendingCoinbaseStackState, 1>, 1>;
+pub type PendingCoinbaseStackStateV1 = Versioned2<PendingCoinbaseStackState, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(PendingCoinbaseStackState)]
@@ -128,7 +128,7 @@ pub struct PendingCoinbase {
     pub state_stack: StateStackV1,
 }
 
-pub type PendingCoinbaseV1 = Versioned<Versioned<PendingCoinbase, 1>, 1>;
+pub type PendingCoinbaseV1 = Versioned2<PendingCoinbase, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(PendingCoinbase)]
@@ -146,7 +146,7 @@ pub struct StateStack {
     pub curr: HashV1,
 }
 
-pub type StateStackV1 = Versioned<Versioned<StateStack, 1>, 1>;
+pub type StateStackV1 = Versioned2<StateStack, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(StateStack)]
@@ -172,7 +172,7 @@ pub struct FeeExcessJson {
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
 pub struct FeeExcessPair(pub FeeExcess, pub FeeExcess);
 
-pub type FeeExcessPairV1 = Versioned<Versioned<FeeExcessPair, 1>, 1>;
+pub type FeeExcessPairV1 = Versioned2<FeeExcessPair, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(FeeExcessPair)]

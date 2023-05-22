@@ -10,7 +10,7 @@ use crate::{
     v1::{AccountNonceV1, AmountV1, BlockTimeV1, HashV1, PublicKey2V1, PublicKeyV1, TokenIdV1},
 };
 use serde::{Deserialize, Serialize};
-use versioned::Versioned;
+use versioned::{Versioned, Versioned2, Versioned3};
 
 /// An account as is serialized into the Mina ledger database stores
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
@@ -41,7 +41,7 @@ pub struct Account {
 }
 
 /// An account as is serialized into the Mina ledger database stores (v1)
-pub type AccountV1 = Versioned<Versioned<Versioned<Account, 1>, 1>, 1>;
+pub type AccountV1 = Versioned3<Account, 1, 1, 1>;
 
 /// An account as is serialized into the Mina ledger database stores (unversioned)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
@@ -91,7 +91,7 @@ pub enum TokenPermissions {
 }
 
 ///
-pub type TokenPermissionsV1 = Versioned<Versioned<TokenPermissions, 1>, 1>;
+pub type TokenPermissionsV1 = Versioned2<TokenPermissions, 1, 1>;
 
 /// Permissions associated with the account
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
@@ -140,7 +140,7 @@ pub struct Permissions {
 }
 
 /// Permissions associated with the account (v1)
-pub type PermissionsV1 = Versioned<Versioned<PermissionsLegacy, 1>, 1>;
+pub type PermissionsV1 = Versioned2<PermissionsLegacy, 1, 1>;
 
 /// The level of auth required to perform a particular action with an account
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
@@ -218,4 +218,4 @@ pub struct TimedDataV0 {
 pub type TimedDataV1 = Versioned<TimedData, 1>;
 
 /// Timing information for an account with regard to when its balance is accessable (v1)
-pub type TimingV1 = Versioned<Versioned<Timing, 1>, 1>;
+pub type TimingV1 = Versioned2<Timing, 1, 1>;

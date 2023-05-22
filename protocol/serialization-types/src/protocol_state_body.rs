@@ -22,7 +22,7 @@ pub struct ProtocolStateBody {
 }
 
 /// Body of the protocol state (v1)
-pub type ProtocolStateBodyV1 = Versioned<Versioned<ProtocolStateBody, 1>, 1>;
+pub type ProtocolStateBodyV1 = Versioned2<ProtocolStateBody, 1, 1>;
 
 /// Body of the protocol state (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
