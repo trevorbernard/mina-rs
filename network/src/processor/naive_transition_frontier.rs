@@ -52,10 +52,10 @@ impl MerkleHasher for DummyHasher {
 }
 
 /// Merkle proof on berkeley net
-/// TODO: Replace [DummyAccount], [DummyHasher] with [Account], [MinaPoseidonMerkleHasher<Account>]
-/// respectively after we can deserialize [Account] from graphql API response
+/// TODO: Replace `[DummyAccount]`, `[DummyHasher]` with `[Account]`, `[MinaPoseidonMerkleHasher<Account>]`
+/// respectively after we can deserialize `[Account]` from graphql API response
 /// note that there are some new changes to the account hashing algorithm and the ledger hashes have
-/// been changed as well. Those have to be fixed accordingly before switching to the real [Account]
+/// been changed as well. Those have to be fixed accordingly before switching to the real `[Account]`
 pub type MerkleProofBerkeleyNet =
     DefaultMerkleProof<DummyAccount, Fp, DummyHasher, MinaPoseidonMerkleMerger>;
 
