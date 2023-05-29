@@ -6,7 +6,7 @@
 use mina_serialization_types_macros::AutoFrom;
 use serde::{Deserialize, Serialize};
 
-use versioned::Versioned;
+use versioned::Versioned2;
 
 use crate::{
     common::{U32Json, U64Json},
@@ -29,7 +29,7 @@ pub struct ProtocolConstants {
 }
 
 /// Constants that define the consensus parameters (v1)
-pub type ProtocolConstantsV1 = Versioned<Versioned<ProtocolConstants, 1>, 1>;
+pub type ProtocolConstantsV1 = Versioned2<ProtocolConstants, 1, 1>;
 
 /// Constants that define the consensus parameters (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

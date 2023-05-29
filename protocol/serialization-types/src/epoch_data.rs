@@ -23,7 +23,7 @@ pub struct EpochLedger {
 }
 
 /// Epoch Ledger (v1)
-pub type EpochLedgerV1 = Versioned<Versioned<EpochLedger, 1>, 1>;
+pub type EpochLedgerV1 = Versioned2<EpochLedger, 1, 1>;
 
 /// Epoch Ledger (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
@@ -51,7 +51,7 @@ pub struct EpochData {
 }
 
 /// Epoch data (v1)
-pub type EpochDataV1 = Versioned<Versioned<EpochData, 1>, 1>;
+pub type EpochDataV1 = Versioned2<EpochData, 1, 1>;
 
 /// Epoch data (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

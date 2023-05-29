@@ -128,7 +128,7 @@ pub struct ConsensusState {
 }
 
 /// V1 protocol version of the consensus state
-pub type ConsensusStateV1 = Versioned<Versioned<ConsensusState, 1>, 1>;
+pub type ConsensusStateV1 = Versioned2<ConsensusState, 1, 1>;
 
 /// json protocol version of the consensus state
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

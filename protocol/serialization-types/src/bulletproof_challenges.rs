@@ -72,8 +72,7 @@ pub struct BulletproofChallengeTuple17(
     pub (),
 );
 
-pub type BulletproofChallengeTuple17V1 =
-    Versioned<Versioned<Versioned<BulletproofChallengeTuple17, 1>, 1>, 1>;
+pub type BulletproofChallengeTuple17V1 = Versioned3<BulletproofChallengeTuple17, 1, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(BulletproofChallengeTuple17)]
@@ -122,7 +121,7 @@ pub struct BulletproofChallengeTuple18(
     pub (),
 );
 
-pub type BulletproofChallengeTuple18V1 = Versioned<Versioned<BulletproofChallengeTuple18, 1>, 1>;
+pub type BulletproofChallengeTuple18V1 = Versioned2<BulletproofChallengeTuple18, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(BulletproofChallengeTuple18)]

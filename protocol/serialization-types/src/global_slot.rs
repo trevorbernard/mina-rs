@@ -5,7 +5,7 @@
 
 use mina_serialization_types_macros::AutoFrom;
 use serde::{Deserialize, Serialize};
-use versioned::Versioned;
+use versioned::Versioned2;
 
 use crate::{
     common::U32Json,
@@ -22,7 +22,7 @@ pub struct GlobalSlot {
 }
 
 /// A global slot (v1)
-pub type GlobalSlotV1 = Versioned<Versioned<GlobalSlot, 1>, 1>;
+pub type GlobalSlotV1 = Versioned2<GlobalSlot, 1, 1>;
 
 /// A global slot (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

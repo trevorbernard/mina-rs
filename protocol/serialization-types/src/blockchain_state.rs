@@ -8,7 +8,7 @@
 use crate::common::*;
 use mina_serialization_types_macros::AutoFrom;
 use serde::{Deserialize, Serialize};
-use versioned::Versioned;
+use versioned::{Versioned, Versioned2};
 
 /// Mina blockchain state struct
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq)]
@@ -26,7 +26,7 @@ pub struct BlockchainState {
 }
 
 /// Mina blockchain state struct (v1)
-pub type BlockchainStateV1 = Versioned<Versioned<BlockchainState, 1>, 1>;
+pub type BlockchainStateV1 = Versioned2<BlockchainState, 1, 1>;
 
 /// Mina blockchain state struct (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
@@ -52,7 +52,7 @@ pub struct StagedLedgerHash {
 }
 
 /// Staged ledger hash structure (v1)
-pub type StagedLedgerHashV1 = Versioned<Versioned<StagedLedgerHash, 1>, 1>;
+pub type StagedLedgerHashV1 = Versioned2<StagedLedgerHash, 1, 1>;
 
 /// Staged ledger hash structure (json)
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]

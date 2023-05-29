@@ -18,14 +18,14 @@ pub type HashV1 = Versioned<[u8; 32], 1>;
 pub type Hash2V1 = Versioned<HashV1, 1>;
 
 /// u64 representing a token ID (v1)
-pub type TokenIdV1 = Versioned<Versioned<Versioned<u64, 1>, 1>, 1>;
+pub type TokenIdV1 = Versioned3<u64, 1, 1, 1>;
 impl_from_for_newtype!(U64Json, TokenIdV1);
 
 /// u64 representing a block time (v1)
-pub type BlockTimeV1 = Versioned<Versioned<u64, 1>, 1>;
+pub type BlockTimeV1 = Versioned2<u64, 1, 1>;
 
 /// u64 representing an account nonce (v1) // This should also be an extendedu32
-pub type AccountNonceV1 = Versioned<Versioned<u32, 1>, 1>;
+pub type AccountNonceV1 = Versioned2<u32, 1, 1>;
 
 /// u32 wrapper (json)
 /// Note that integers are represented as string in mina json
@@ -134,17 +134,17 @@ impl<'de> Deserialize<'de> for DecimalJson {
 }
 
 /// u32 representing a length (v1)
-pub type LengthV1 = Versioned<Versioned<u32, 1>, 1>;
+pub type LengthV1 = Versioned2<u32, 1, 1>;
 impl_from_for_newtype!(U32Json, LengthV1);
 
 /// u32 representing a delta (i.e. difference) (v1)
-pub type DeltaV1 = Versioned<Versioned<u32, 1>, 1>;
+pub type DeltaV1 = Versioned2<u32, 1, 1>;
 
 /// u32 representing a slot number (v1)
-pub type GlobalSlotNumberV1 = Versioned<Versioned<u32, 1>, 1>;
+pub type GlobalSlotNumberV1 = Versioned2<u32, 1, 1>;
 
 /// u64 representing an amount of currency (v1)
-pub type AmountV1 = Versioned<Versioned<u64, 1>, 1>;
+pub type AmountV1 = Versioned2<u64, 1, 1>;
 impl_from_for_newtype!(U64Json, AmountV1);
 impl_from_for_newtype!(DecimalJson, AmountV1);
 
@@ -152,7 +152,7 @@ impl_from_for_newtype!(DecimalJson, AmountV1);
 // Note: Extended_Uint32 is not defined in bin_prot, but comes from mina
 // Block path: t/staged_ledger_diff/t/diff/t/0/t/t/commands/0/t/data/t/t/t/t/payload/t/t/common/t/t/t/valid_until
 /// u32 wrapped in 1 version byte
-pub type ExtendedU32 = Versioned<Versioned<i32, 1>, 1>;
+pub type ExtendedU32 = Versioned2<i32, 1, 1>;
 impl From<U32Json> for ExtendedU32 {
     fn from(t: U32Json) -> Self {
         (t.0 as i32).into()

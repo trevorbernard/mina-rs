@@ -21,8 +21,7 @@ pub struct ProtocolStateProof {
 }
 
 /// SNARK proof of the protocol state at some point in time (v1)
-pub type ProtocolStateProofV1 =
-    Versioned<Versioned<Versioned<Versioned<ProtocolStateProof, 1>, 1>, 1>, 1>;
+pub type ProtocolStateProofV1 = Versioned4<ProtocolStateProof, 1, 1, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(ProtocolStateProof)]
@@ -71,7 +70,7 @@ pub struct ProofStatement {
     pub pass_through: PairingBasedV1,
 }
 
-pub type ProofStatementV1 = Versioned<Versioned<ProofStatement, 1>, 1>;
+pub type ProofStatementV1 = Versioned2<ProofStatement, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(ProofStatement)]
@@ -169,8 +168,7 @@ pub struct SpongeDigestBeforeEvaluations(
     pub (),
 );
 
-pub type SpongeDigestBeforeEvaluationsV1 =
-    Versioned<Versioned<SpongeDigestBeforeEvaluations, 1>, 1>;
+pub type SpongeDigestBeforeEvaluationsV1 = Versioned2<SpongeDigestBeforeEvaluations, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(SpongeDigestBeforeEvaluations)]
@@ -238,7 +236,7 @@ pub struct Proof {
     pub openings: ProofOpeningsV1,
 }
 
-pub type ProofV1 = Versioned<Versioned<Proof, 1>, 1>;
+pub type ProofV1 = Versioned2<Proof, 1, 1>;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, AutoFrom)]
 #[auto_from(Proof)]
