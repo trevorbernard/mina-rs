@@ -9,7 +9,7 @@ use mina_serialization_types_macros::AutoFrom;
 use once_cell::sync::OnceCell;
 use proof_systems::{mina_signer::CompressedPubKey, ChunkedROInput, ToChunkedROInput};
 
-/// Wrapper of Vec<u8>
+/// Wrapper of `Vec<u8>`
 #[derive(Clone, Debug, Eq, PartialEq, AutoFrom)]
 #[auto_from(mina_serialization_types::common::ByteVec)]
 pub struct ByteVec(pub Vec<u8>);
@@ -33,7 +33,7 @@ impl<'a> ToChunkedROInput for CompressedPubKeyHashableWrapper<'a> {
     }
 }
 
-/// Wrapper of [Option<CompressedPubKey>] that implements [ToChunkedROInput]
+/// Wrapper of `[Option<CompressedPubKey>]` that implements `[ToChunkedROInput]`
 #[derive(Debug, Clone)]
 pub struct CompressedPubKeyOptionHashableWrapper<'a>(pub &'a Option<CompressedPubKey>);
 

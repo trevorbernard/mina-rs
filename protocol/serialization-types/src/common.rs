@@ -209,13 +209,13 @@ impl<'de> Deserialize<'de> for CharJson {
 /// 32 bytes representing a BigInt256
 pub type BigInt256 = [u8; 32];
 
-/// Wrapper of Vec<u8>
+/// Wrapper of `Vec<u8>`
 #[derive(Clone, Debug, Serialize, Deserialize, Eq, PartialEq, derive_more::From)]
 pub struct ByteVec(pub Vec<u8>);
 
 impl_from_versioned!(ByteVec);
 
-/// Wrapper of Vec<u8> (json)
+/// Wrapper of `Vec<u8>` (json)
 #[derive(Debug, Clone, Eq, PartialEq, From, Into, AutoFrom)]
 #[auto_from(ByteVec)]
 pub struct ByteVecJson(pub Vec<u8>);

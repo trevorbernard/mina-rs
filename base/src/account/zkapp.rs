@@ -61,7 +61,7 @@ impl ToChunkedROInput for ZkApp {
     }
 }
 
-/// Wrapper of [Option<ZkApp>] that implements [Hashable]
+/// Wrapper of `[Option<ZkApp>]` that implements `[Hashable]`
 #[derive(Debug, Clone)]
 pub struct ZkAppOptionHashableWrapper<'a>(pub &'a Option<ZkApp>);
 
@@ -110,7 +110,7 @@ impl ToChunkedROInput for ZkAppUri {
     }
 }
 
-/// Wrapper of [Option<ZkAppUri>] that implements [Hashable]
+/// Wrapper of `[Option<ZkAppUri>]` that implements `[Hashable]`
 #[derive(Debug, Clone)]
 pub struct ZkAppUriOptionHashableWrapper<'a>(pub &'a Option<ZkAppUri>);
 
